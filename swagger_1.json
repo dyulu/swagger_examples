@@ -1,0 +1,74 @@
+{
+  "definitions": {
+    "MemThreshold": {
+      "properties": {
+        "threshold": {
+          "description": "memory usage threshold", 
+          "example": 40, 
+          "type": "integer"
+        }
+      }, 
+      "required": "threshold"
+    }
+  }, 
+  "info": {
+    "title": "Memory usage API", 
+    "version": "1.0"
+  }, 
+  "paths": {
+    "/": {
+      "get": {
+        "description": "", 
+        "responses": {
+          "200": {
+            "description": "Return the help message"
+          }
+        }, 
+        "summary": "Get the help message", 
+        "tags": [
+          "help"
+        ]
+      }
+    }, 
+    "/memusage": {
+      "get": {
+        "description": "", 
+        "responses": {
+          "200": {
+            "description": "Return the memory usage info"
+          }
+        }, 
+        "summary": "Get the memory usage", 
+        "tags": [
+          "memusage"
+        ]
+      }, 
+      "post": {
+        "description": "", 
+        "parameters": [
+          {
+            "in": "body", 
+            "name": "payload", 
+            "required": true, 
+            "schema": {
+              "$ref": "#/definitions/MemThreshold"
+            }
+          }
+        ], 
+        "responses": {
+          "201": {
+            "description": "Threshold successfully set"
+          }, 
+          "400": {
+            "description": "Invalid memory usage threshold input"
+          }
+        }, 
+        "summary": "Set memory usage threshold", 
+        "tags": [
+          "memusage"
+        ]
+      }
+    }
+  }, 
+  "swagger": "2.0"
+}

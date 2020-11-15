@@ -1,0 +1,95 @@
+{
+    "swagger": "2.0",
+    "basePath": "/",
+    "paths": {
+        "/api/help": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "operationId": "get_home_api",
+                "tags": [
+                    "api"
+                ]
+            }
+        },
+        "/api/memusage": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "operationId": "get_mem_usage_api",
+                "tags": [
+                    "api"
+                ]
+            },
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Invalid mem usage threshold"
+                    }
+                },
+                "operationId": "post_mem_usage_api",
+                "parameters": [
+                    {
+                        "name": "payload",
+                        "required": true,
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Mem threshold Model"
+                        }
+                    }
+                ],
+                "tags": [
+                    "api"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "My mem API",
+        "version": "1.0",
+        "description": "Swagger for mem API"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "tags": [
+        {
+            "name": "api",
+            "description": "Memory usage APIs"
+        }
+    ],
+    "definitions": {
+        "Mem threshold Model": {
+            "required": [
+                "threshold"
+            ],
+            "properties": {
+                "threshold": {
+                    "type": "integer",
+                    "description": "Memory usage threshold"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "responses": {
+        "ParseError": {
+            "description": "When a mask can't be parsed"
+        },
+        "MaskError": {
+            "description": "When any error occurs on mask"
+        }
+    }
+}
